@@ -174,7 +174,7 @@
         <div class="footer-social">
           <a href=""><img src="@/assets/images/facebook.png" alt="" /></a>
           <a href=""><img src="@/assets/images/twitter.png" alt="" /></a>
-          <a href=""><img src="@/assets/images/instagram.png" alt="" /></a>
+          <!-- <a href=""><img src="@/assets/images/instagram.png" alt="" /></a> -->
           <a href=""><img src="@/assets/images/youtube.png" alt="" /></a>
         </div>
       </footer>
