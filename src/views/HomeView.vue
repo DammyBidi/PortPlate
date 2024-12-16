@@ -1,7 +1,7 @@
 <template>
   <div class="home">
     <nav>
-      <div class="logo"><img src="../assets/images/logo1.png" alt="" /></div>
+      <div class="logo"><img src="@/assets/images/logo1.png" alt="" /></div>
       <div class="nav-links">
         <router-link to="/">Home</router-link>
         <router-link to="/">About</router-link>
@@ -43,13 +43,13 @@
           </div>
         </div>
       </div>
-      <div class="hero-img"><img src="../assets/images/hero.png" alt="" /></div>
+      <div class="hero-img"><img src="@/assets/images/hero.png" alt="" /></div>
     </div>
 
     <!-- about -->
     <div class="about">
       <div class="about-img">
-        <img src="../assets/images/about.png" alt="" />
+        <img src="@/assets/images/about.png" alt="" />
       </div>
       <div class="about-text">
         <h3>About Us</h3>
@@ -98,7 +98,7 @@
           </p>
         </div>
         <div class="card2">
-          <img src="../assets/images/card2.png" alt="" />
+          <img src="@/assets/images/card2.png" alt="" />
           <h1>Professional Templates</h1>
           <p>
             Choose from a variety of beautifully designed templates. Each
@@ -107,7 +107,7 @@
           </p>
         </div>
         <div class="card3">
-          <img src="../assets/images/card3.png" alt="" />
+          <img src="@/assets/images/card3.png" alt="" />
           <h1>Easy Sharing and Export Options</h1>
           <p>
             Share your portfolio with a personalized link or download it in
@@ -131,7 +131,7 @@
           </router-link>
         </div>
         <div class="workflow-img">
-          <img src="../assets/images/workflow.svg" alt="" />
+          <img src="@/assets/images/workflow.svg" alt="" />
         </div>
       </div>
       <div class="big-text">
@@ -141,7 +141,7 @@
 
     <div class="account">
       <div class="account-img">
-        <img src="../assets/images/account.png" alt="" />
+        <img src="@/assets/images/account.png" alt="" />
       </div>
       <div class="account-text">
         <h1>
@@ -168,14 +168,14 @@
           <a href="">Contact</a>
         </div>
         <div class="footer-image">
-          <img src="../assets/images/logo2.png" alt="" />
+          <img src="@/assets/images/logo2.png" alt="" />
         </div>
         <p>Your skills, your story, your portfolio</p>
         <div class="footer-social">
-          <a href=""><img src="../assets/images/facebook.png" alt="" /></a>
-          <a href=""><img src="../assets/images/twitter.png" alt="" /></a>
-          <a href=""><img src="../assets/images/instagram.png" alt="" /></a>
-          <a href=""><img src="../assets/images/youtube.png" alt="" /></a>
+          <a href=""><img src="@/assets/images/facebook.png" alt="" /></a>
+          <a href=""><img src="@/assets/images/twitter.png" alt="" /></a>
+          <a href=""><img src="@/assets/images/instagram.png" alt="" /></a>
+          <a href=""><img src="@/assets/images/youtube.png" alt="" /></a>
         </div>
       </footer>
       <div class="rights">
