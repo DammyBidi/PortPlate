@@ -9,7 +9,7 @@
       <nav>
         <ul>
           <li>
-            <i class="icon"><img src="../assets/images/icon1.svg" alt="" /></i>
+            <i class="icon"><img src="../assets/images/Icon1.svg" alt="" /></i>
             <span>Dashboard</span>
           </li>
           <li>
@@ -73,7 +73,7 @@
           {{ userDetails?.projects }}
         </p>
       </section>
-      
+
 
       <!-- About Me -->
       <section class="section">
