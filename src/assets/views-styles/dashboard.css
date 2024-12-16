@@ -1,0 +1,186 @@
+/* General Styles */
+.dashboard-container {
+  display: flex;
+  background-color: #f5f6fa;
+  color: #333;
+  
+}
+
+h1,
+h2 {
+  margin: 0;
+  color: #333;
+}
+
+p {
+  margin: 0.5rem 0;
+  color: #555;
+}
+
+/* Sidebar */
+.sidebar {
+  width: 250px;
+  background-color: #ffffff;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  color: #4f4f4f;
+  border-right: 2px solid #f5f6fa;
+  /* height: 100vh; */
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.logo img {
+  width: 150px;
+  margin-bottom: 2rem;
+}
+
+nav ul {
+  list-style: none;
+  padding: 0;
+}
+
+nav li {
+  display: flex;
+  align-items: center;
+  margin: 1rem 0;
+  cursor: pointer;
+}
+
+nav .icon {
+  margin-right: 0.5rem;
+}
+
+/* Top Header */
+.top-header {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: flex-end;
+  padding: 1rem;
+}
+
+.greeting {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.greeting p {
+  font-size: 1.5rem;
+}
+
+.header-profile-pic {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  border: 2px solid #0c4bdb;
+}
+
+.top-header .btn {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.top-header .btn button {
+  background-color: #0c4bdb;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.top-header .btn button:hover {
+  background-color: #0a3d6f;
+}
+
+/* Main Content */
+.main-content {
+  flex: 1;
+  padding: 1rem 2rem;
+}
+
+/* Header */
+.header .cover-image img {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.profile-info {
+  display: flex;
+  align-items: center;
+  margin-top: -40px;
+  width: fit-content;
+}
+
+.profile-pic {
+  position: relative;
+  margin-right: 1rem;
+}
+
+.profile-pic img {
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  border: 3px solid white;
+}
+
+.profile-pic .verified {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  background-color: #0c4bdb;
+  color: white;
+  border-radius: 50%;
+  font-size: 0.8rem;
+  padding: 2px 4px;
+}
+
+.profile-text {
+  max-width: 100%;
+  word-wrap: break-word;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Sections */
+.section {
+  margin: 2rem 0;
+}
+
+.section h2 {
+  background-color: #061B46;
+  color: white;
+  display: inline-block;
+  padding: 0.5rem 1.5rem;
+  border-radius: 20px;
+  font-size: 1.2rem;
+  font-weight: 500;
+}
+
+.portfolio-templates {
+  display: flex;
+  gap: 6rem;
+  flex-wrap: wrap;
+  margin-top: 2rem;
+}
+
+.template {
+  text-align: center;
+}
+
+.template img {
+  width: 200px;
+  height: auto;
+  border-radius: 5px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+.template p {
+  margin-top: 0.5rem;
+  font-weight: bold;
+}
