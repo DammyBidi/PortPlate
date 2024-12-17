@@ -17,7 +17,7 @@ export const useUserStore = defineStore("user", {
       facebookLink?: string;
       instagramLink?: string;
       twitterLink?: string;
-      profilePicture?: File | null;
+      profilePicture?: File | string | null;
       selectedTemplate?: number;
     } | null, // Allow null or an object with name and email
 
@@ -33,8 +33,8 @@ export const useUserStore = defineStore("user", {
       );
       if (user) {
         this.userDetails = { ...user, ...this.userDetails }; // Merge user details
-        this.loggedIn = true; // Set login state  
-        localStorage.setItem("userDetails", JSON.stringify(this.userDetails)); // Save to 
+        this.loggedIn = true; // Set login state
+        localStorage.setItem("userDetails", JSON.stringify(this.userDetails)); // Save to
         localStorage.setItem("loggedIn", JSON.stringify(this.loggedIn));
         return user;
       }
@@ -76,21 +76,51 @@ export const useUserStore = defineStore("user", {
       facebookLink?: string;
       instagramLink?: string;
       twitterLink?: string;
-      profilePicture?: File | null;
+      profilePicture?: File | null | string;
       selectedTemplate?: number;
     }) {
       if (!this.userDetails) return;
+      const saveDetails = async () => {
+        let updatedDetails = { ...this.userDetails, ...details } as {
+          name: string;
+          email: string;
+          title?: string;
+          shortBio?: string;
+          projects?: string;
+          about?: string;
+          githubLink?: string;
+          facebookLink?: string;
+          instagramLink?: string;
+          twitterLink?: string;
+          profilePicture?: File | string | null;
+          selectedTemplate?: number;
+        };
 
-      // Merge the new details with existing userDetails
-      this.userDetails = { ...this.userDetails, ...details };
-      localStorage.setItem("userDetails", JSON.stringify(this.userDetails)); // Save updated details to localStorage
+        // Handle profilePicture conversion to Base64
+        if (details.profilePicture instanceof File) {
+          const base64Image = await this.convertFileToBase64(
+            details.profilePicture
+          );
+          updatedDetails.profilePicture = base64Image;
+        }
+
+        // Merge and persist the updated details
+        this.userDetails = updatedDetails;
+        localStorage.setItem("userDetails", JSON.stringify(this.userDetails));
+      };
+
+      saveDetails();
     },
 
-      // Handle profile picture for File object
-      // if (details.profilePicture instanceof File) {
-      //   const imageUrl = URL.createObjectURL(details.profilePicture);
-      //   this.userDetails.profilePicture = imageUrl;
-      // }
+    // Convert file to Base64
+    convertFileToBase64(file: File): Promise<string> {
+      return new Promise((resolve) => {
+        const reader = new FileReader();
+        reader.readAsDataURL(file);
+        reader.onload = () => resolve(reader.result as string);
+        // reader.onerror = (error) => reject(error);
+      });
+    },
 
     // Log out the user
     logout() {

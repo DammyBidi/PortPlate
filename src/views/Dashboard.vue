@@ -4,7 +4,7 @@
     <!-- Sidebar -->
     <aside class="sidebar">
       <div class="logo">
-        <img src="../assets/images/logo1.png" alt="Logo" />
+        <router-link to="/"><img src="../assets/images/logo1.png" alt="Logo" /></router-link>
       </div>
       <nav>
         <ul>
@@ -14,7 +14,7 @@
           </li>
           <li>
             <i class="icon"><img src="../assets/images/icon2.svg" alt="" /></i>
-            <span>Home</span>
+            <router-link to="/">Home</router-link>
           </li>
           <li>
             <i class="icon"><img src="../assets/images/icon3.svg" alt="" /></i>
@@ -38,6 +38,7 @@
             :src="profilePicture"
             alt="Profile"
           />
+          <!-- <img class="header-profile-pic" v-if="typeof userDetails?.profilePicture === 'string'" :src="userDetails.profilePicture" alt="Profile Picture" /> -->
           <p>Hi,{{ userDetails?.name }}</p>
         </div>
         <div class="btn">
@@ -52,6 +53,7 @@
         </div>
         <div class="profile-info">
           <div class="profile-pic">
+            <!-- <img  v-if="typeof userDetails?.profilePicture === 'string'" :src="userDetails.profilePicture" alt="Profile Picture" /> -->
             <img v-if="profilePicture" :src="profilePicture" alt="Profile Picture" />
             <!-- <span class="verified">✔️</span> -->
           </div>
@@ -93,16 +95,6 @@
             <p>{{ template.name }}</p>
           </div>
         </div>
-        <!-- <h2>Select a Portfolio Template</h2>
-        <div
-          v-for="template in templates"
-          :key="template.id"
-          class="template"
-          @click="selectTemplate(template.id)"
-        >
-          <img :src="template.image" :alt="template.name" />
-          <p>{{ template.name }}</p>
-        </div> -->
       </section>
     </main>
   </div>
@@ -133,8 +125,13 @@ const getProfilePicture = () => {
   }
 
   if (picture instanceof Blob) {
-    previousObjectURL = URL.createObjectURL(picture);
-    return previousObjectURL;
+    const newObjectURL = URL.createObjectURL(picture);
+    previousObjectURL = newObjectURL;
+    // previousObjectURL = URL.createObjectURL(picture);
+   
+    // Save Object URL to the user store for persistence
+    userStore.updateUserDetails({ profilePicture: newObjectURL });
+    return newObjectURL;
   }
 
   return picture as string | undefined;
