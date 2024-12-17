@@ -42,7 +42,12 @@
             }}
           </p>
 
-          <a v-if="userDetails" :href="userDetails.githubLink" target="_blank" rel="noopener">
+          <a
+            v-if="userDetails"
+            :href="userDetails.githubLink"
+            target="_blank"
+            rel="noopener"
+          >
             <button id="second-btn">See My Projects</button>
           </a>
         </div>
@@ -121,9 +126,13 @@ const userStore = useUserStore();
 const userDetails = computed(() => userStore.userDetails);
 
 // Helper function to resolve profile picture URL
-const resolveProfilePicture = (profilePicture: string | Blob | undefined): string => {
+const resolveProfilePicture = (
+  profilePicture: string | Blob | undefined
+): string => {
   if (!profilePicture) return "";
-  return profilePicture instanceof Blob ? URL.createObjectURL(profilePicture) : profilePicture;
+  return profilePicture instanceof Blob
+    ? URL.createObjectURL(profilePicture)
+    : profilePicture;
 };
 
 // Computed property to check if contact info exists
@@ -134,7 +143,6 @@ const hasContactInfo = computed(() => {
     userDetails.value?.facebookLink
   );
 });
-
 </script>
 
 <style scoped>
