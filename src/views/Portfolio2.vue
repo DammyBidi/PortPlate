@@ -1,7 +1,7 @@
 <template>
-  <div>
+  <div class="main">
     <nav class="Navbar">
-      <img src="../assets/Portolioimages/logo.svg" alt="" />
+      <img src="../assets/images/logo1.png" alt="" />
       <div class="Navbar-item">
         <a href="">Home</a>
         <a href="">About</a>
@@ -16,17 +16,17 @@
     <div class="mobile-nav">
       <div>
         <h3>Projects</h3>
-        <img src="../assets/Portolioimages/Linee.jpg" alt="" />
+        <img src="../assets/Portfolioimages2/Linee.jpg" alt="" />
       </div>
 
       <div>
         <h3>About Me</h3>
-        <img src="../assets/Portolioimages/Linee.jpg" alt="" />
+        <img src="../assets/Portfolioimages2/Linee.jpg" alt="" />
       </div>
 
       <div>
         <h3>Resume</h3>
-        <img src="../assets/Portolioimages/Linee.jpg" alt="" />
+        <img src="../assets/Portfolioimages2/Linee.jpg" alt="" />
       </div>
     </div>
     <section class="B-section">
@@ -48,13 +48,13 @@
         </div>
 
         <div class="right1">
-          <img src="../assets/Portolioimages/first.jpg" alt="" />
+          <img src="../assets/Portfolioimages2/first.jpg" alt="" />
         </div>
       </section>
 
       <section class="secondbody">
         <div class="left2">
-          <img src="../assets/Portolioimages/pix.jpg" alt="" />
+          <img src="../assets/Portfolioimages2/pix.jpg" alt="" />
         </div>
 
         <div class="right2">
@@ -68,7 +68,7 @@
 
       <section class="thirdbody">
         <div class="left3">
-          <h2>Projects</h2>
+          <h2>Projects/Experience</h2>
           <p>
             {{
               userDetails?.projects || "Write something about yourself here."
@@ -77,36 +77,36 @@
         </div>
 
         <div class="right3">
-          <img src="../assets/Portolioimages/frame.jpg" alt="" />
+          <img src="../assets/Portfolioimages2/frame.jpg" alt="" />
         </div>
       </section>
 
       <footer>
         <div class="footer-Img">
-          <img src="../assets/Portolioimages/logo.svg" alt="" />
+          <img src="../assets/images/logo1.png" alt="" />
         </div>
 
         <div class="centerfoot">
           <div v-if="userDetails?.facebookLink" class="face">
             <a :href="userDetails.facebookLink" target="_blank" rel="noopener">
-              <img src="../assets/Portolioimages/facebook.svg" alt="" />
+              <img src="../assets/Portfolioimages2/facebook.svg" alt="" />
             </a>
           </div>
 
           <div v-if="userDetails?.twitterLink" class="twitter">
             <a :href="userDetails.twitterLink" target="_blank" rel="noopener">
-              <img src="../assets/Portolioimages/twitter.svg" alt="" />
+              <img src="../assets/Portfolioimages2/twitter.svg" alt="" />
             </a>
           </div>
 
           <div v-if="userDetails?.instagramLink" class="insta">
             <a :href="userDetails.instagramLink" target="_blank" rel="noopener">
-              <img src="../assets/Portolioimages/iG.svg" alt="" />
+              <img src="../assets/Portfolioimages2/iG.svg" alt="" />
             </a>
           </div>
         </div>
 
-        <p>@2023 SAMMY JONATHAN</p>
+        <p>Copyright©2024 | PortPlate. All rights reserved.</p>
       </footer>
     </section>
   </div>
