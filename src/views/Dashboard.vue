@@ -33,9 +33,9 @@
       <header class="top-header">
         <div class="greeting">
           <img
-            class="header-profile-pic"
-            v-if="userDetails && userDetails.profilePicture"
-            :src="userDetails?.profilePicture"
+          class="header-profile-pic"
+            v-if="profilePicture"
+            :src="profilePicture"
             alt="Profile"
           />
           <p>Hi,{{ userDetails?.name }}</p>
@@ -52,11 +52,7 @@
         </div>
         <div class="profile-info">
           <div class="profile-pic">
-            <img
-              v-if="userDetails && userDetails.profilePicture"
-              :src="userDetails.profilePicture"
-              alt="Profile Picture"
-            />
+            <img v-if="profilePicture" :src="profilePicture" alt="Profile Picture" />
             <!-- <span class="verified">✔️</span> -->
           </div>
           <div class="profile-text">
@@ -115,19 +111,53 @@
 <script setup lang="ts">
 import { useUserStore } from "../store/user";
 import { useRouter } from "vue-router";
-import { ref } from "vue";
-import { computed } from "vue";
+import { ref, watchEffect, computed } from "vue";
+
 
 const userStore = useUserStore();
 const router = useRouter();
 
-const userDetails = ref({
-  ...userStore.userDetails,
-  profilePicture:
-    userStore.userDetails?.profilePicture instanceof Blob
-      ? URL.createObjectURL(userStore.userDetails.profilePicture)
-      : (userStore.userDetails?.profilePicture as string | undefined),
+// Local State
+const userDetails = ref(userStore.userDetails);
+const profilePicture = ref<string | undefined>();
+
+let previousObjectURL: string | null = null; // To clean up old URLs
+
+// Function to safely get profilePicture
+const getProfilePicture = () => {
+  const picture = userStore.userDetails?.profilePicture;
+
+  if (previousObjectURL) {
+    URL.revokeObjectURL(previousObjectURL); // Cleanup old URL
+    previousObjectURL = null;
+  }
+
+  if (picture instanceof Blob) {
+    previousObjectURL = URL.createObjectURL(picture);
+    return previousObjectURL;
+  }
+
+  return picture as string | undefined;
+};
+
+
+// Watch for changes in userDetails
+watchEffect(() => {
+  userDetails.value = userStore.userDetails;
+  profilePicture.value = getProfilePicture();
+
+  // Redirect to login if userDetails is null
+  if (!userDetails.value) {
+    router.push("/login");
+  }
 });
+
+
+
+// Redirect to login if not authenticated
+if (!userStore.loggedIn) {
+  router.push("/login");
+}
 
 const navigateToEdit = () => {
   router.push("/edit-profile");
@@ -136,28 +166,15 @@ const navigateToEdit = () => {
 if (!userDetails.value) {
   router.push("/login");
 }
-
+// Template Data
 import templateImage1 from "../assets/images/template.svg";
 import templateImage2 from "../assets/images/template2.svg";
 
 const templates = ref([
-  {
-    id: 1,
-    name: "Classic Portfolio",
-    image: templateImage1,
-  },
-  {
-    id: 2,
-    name: "Modern Portfolio",
-    image: templateImage2,
-  },
-  {
-    id: 3,
-    name: "Creative Portfolio",
-    image: templateImage2,
-  },
+  { id: 1, name: "Classic Portfolio", image: templateImage1 },
+  { id: 2, name: "Modern Portfolio", image: templateImage2 },
+  { id: 3, name: "Creative Portfolio", image: templateImage2 },
 ]);
-
 
 
 

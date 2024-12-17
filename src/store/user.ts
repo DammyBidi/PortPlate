@@ -5,6 +5,7 @@ export const useUserStore = defineStore("user", {
     users: [
       { email: "test@example.com", password: "password123", name: "Test User" },
     ] as { email: string; password: string; name: string }[], // Array to store registered users
+
     userDetails: JSON.parse(localStorage.getItem("userDetails") || "null") as {
       name: string;
       title?: string;
@@ -19,7 +20,10 @@ export const useUserStore = defineStore("user", {
       profilePicture?: File | null;
       selectedTemplate?: number;
     } | null, // Allow null or an object with name and email
+
+    loggedIn: JSON.parse(localStorage.getItem("loggedIn") || "false"), // Persist login state
   }),
+
   actions: {
     // Authenticate user credentials during login
     authenticate(credentials: { email: string; password: string }) {
@@ -28,8 +32,10 @@ export const useUserStore = defineStore("user", {
           u.email === credentials.email && u.password === credentials.password
       );
       if (user) {
-        this.userDetails = user; // Set the logged-in user details
-        localStorage.setItem("userDetails", JSON.stringify(user)); // Save to localStorage
+        this.userDetails = { ...user, ...this.userDetails }; // Merge user details
+        this.loggedIn = true; // Set login state  
+        localStorage.setItem("userDetails", JSON.stringify(this.userDetails)); // Save to 
+        localStorage.setItem("loggedIn", JSON.stringify(this.loggedIn));
         return user;
       }
       return null; // Return null if authentication fails
@@ -54,7 +60,9 @@ export const useUserStore = defineStore("user", {
 
       // Set the newly registered user as the current user
       this.userDetails = { name, email };
+      this.loggedIn = true; // Set login state
       localStorage.setItem("userDetails", JSON.stringify(this.userDetails)); // Save to localStorage
+      localStorage.setItem("loggedIn", JSON.stringify(this.loggedIn));
     },
 
     // Save or update additional user details
@@ -78,9 +86,25 @@ export const useUserStore = defineStore("user", {
       localStorage.setItem("userDetails", JSON.stringify(this.userDetails)); // Save updated details to localStorage
     },
 
+      // Handle profile picture for File object
+      // if (details.profilePicture instanceof File) {
+      //   const imageUrl = URL.createObjectURL(details.profilePicture);
+      //   this.userDetails.profilePicture = imageUrl;
+      // }
+
     // Log out the user
     logout() {
-      this.userDetails = null;
+      this.loggedIn = false; // Update login state
+      localStorage.setItem("loggedIn", JSON.stringify(this.loggedIn));
+    },
+
+    loadUserDetails() {
+      const storedUser = localStorage.getItem("userDetails");
+      const loggedInState = localStorage.getItem("loggedIn");
+      if (storedUser) {
+        this.userDetails = JSON.parse(storedUser);
+      }
+      if (loggedInState) this.loggedIn = JSON.parse(loggedInState);
     },
   },
 });
