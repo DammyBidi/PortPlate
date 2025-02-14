@@ -4,8 +4,8 @@
       <div class="logo"><img src="@/assets/images/logo1.png" alt="" /></div>
       <div class="nav-links">
         <router-link to="/">Home</router-link>
-        <router-link to="/">About</router-link>
-        <router-link to="/">Contact</router-link>
+        <a href="#about">About</a>
+        <a href="#footer-container">Contact</a>
       </div>
       <div class="nav-btn">
         <router-link to="/login"><button class="btn1">Login</button></router-link>
@@ -23,7 +23,7 @@
           We are your number one-stop solution for building <br />
           a professional and personalized portfolio website with ease.
         </p>
-        <router-link to="/"
+        <router-link to="/signup"
           ><button class="btn3">Get Started</button></router-link
         >
         <div class="hero-users">
@@ -47,7 +47,7 @@
     </div>
 
     <!-- about -->
-    <div class="about">
+    <section id="about">
       <div class="about-img">
         <img src="@/assets/images/about.png" alt="" />
       </div>
@@ -69,7 +69,7 @@
           ><button class="btn4">Learn More</button></router-link
         >
       </div>
-    </div>
+    </section>
 
     <!-- features -->
     <div class="features">
@@ -126,7 +126,7 @@
             sharing, ensuring every step is smooth, customizable, and tailored
             to bring out the best of your professional journey.
           </h1>
-          <router-link to="/"
+          <router-link to="/signup"
             ><button class="btn5">Grab your slot!</button>
           </router-link>
         </div>
@@ -153,13 +153,13 @@
           templates and build a stunning professional portfolio that truly
           reflects you!
         </p>
-        <router-link to="/"
+        <router-link to="/signup"
           ><button class="btn6">Get Started</button></router-link
         >
       </div>
     </div>
 
-    <div class="footer-container">
+    <section id="footer-container">
       <footer>
         <div class="footer-link">
           <a href="">Product</a>
@@ -182,7 +182,7 @@
         <hr>
         <p>Copyright©2024 | PortPlate. All rights reserved.</p>
       </div>
-    </div>
+    </section>
   </div>
 </template>
 

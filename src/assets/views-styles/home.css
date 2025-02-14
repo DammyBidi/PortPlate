@@ -45,6 +45,7 @@ nav {
     font-size: 1rem;
     line-height: 12px;
     background-color: #fff;
+    cursor: pointer;
 }
 
 .nav-btn .btn2{
@@ -57,6 +58,7 @@ nav {
     font-size: 1rem;
     line-height: 12px;
     background-color: #0F43AC;
+    cursor: pointer;
 }
 
 /* hero */
@@ -131,6 +133,7 @@ span {
     background-color: #0F43AC;
     color: #fff;
     border: none;
+    cursor: pointer;
 }
 
 .hero-img {
@@ -143,7 +146,7 @@ span {
 
 /* about */
 
-.about {
+#about {
     display: flex;
     margin: 0 2rem;
     margin-top: 2rem;
@@ -197,6 +200,7 @@ span {
     background-color: #fff;
     color: #000000;
     border: none;
+    cursor: pointer;
 }
 
 /* features */
@@ -339,6 +343,7 @@ span {
     background-color: #0F43AC;
     color: #fff;
     border: none;
+    cursor: pointer;
 }
 
 .workflow-img {
@@ -410,9 +415,10 @@ span {
     background-color: #fff;
     color: #000000;
     border: none;
+    cursor: pointer;
 }
 
-.footer-container {
+#footer-container {
     display: flex;
     flex-direction: column;
     /* align-items: center; */
